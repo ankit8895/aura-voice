@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
-import { Toaster } from "@/components/ui/glass/sonner";
+import { Toaster } from "@/components/ui/sonner";
 import { ClerkProvider } from "@clerk/nextjs";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -23,7 +24,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         suppressHydrationWarning
       >
         <body className="min-h-full flex flex-col">
-          {children}
+          <TooltipProvider>{children}</TooltipProvider>
           <Toaster />
         </body>
       </html>
