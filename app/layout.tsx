@@ -11,7 +11,10 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "AuraVoice",
+  title: {
+    default: "AuraVoice",
+    template: "%s | AuraVoice",
+  },
   description: "AI-powered text-to-speech and voice cloning platform",
 };
 

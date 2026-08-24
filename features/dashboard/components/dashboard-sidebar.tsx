@@ -2,20 +2,18 @@
 
 import {
   Sidebar,
-  SidebarHeader,
   SidebarContent,
   SidebarFooter,
-} from "@/components/ui/sidebar";
-import { Skeleton } from "@/components/ui/skeleton";
-import {
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
+  SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
+import { Skeleton } from "@/components/ui/skeleton";
 import { OrganizationSwitcher, useClerk, UserButton } from "@clerk/nextjs";
 import {
   AudioLines,
@@ -29,7 +27,6 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Button } from "@/components/ui/button";
 
 interface MenuItem {
   title: string;
@@ -57,7 +54,6 @@ function NavSection({ label, items, pathname }: NavSectionProps) {
           {items.map((item) => (
             <SidebarMenuItem key={item.title}>
               <SidebarMenuButton
-                // asChild={!!item.url}
                 render={
                   item.url ? (
                     <Link href={item.url}>
@@ -73,8 +69,8 @@ function NavSection({ label, items, pathname }: NavSectionProps) {
                 }
                 isActive={
                   item.url
-                    ? item.url === "/"
-                      ? pathname === "/"
+                    ? item.url === "/dashboard"
+                      ? pathname === "/dashboard"
                       : pathname.startsWith(item.url)
                     : false
                 }
@@ -95,7 +91,7 @@ export function DashboardSidebar() {
   const clerk = useClerk();
 
   const mainMenuItems: MenuItem[] = [
-    { title: "Dashboard", url: "/", icon: Home },
+    { title: "Dashboard", url: "/dashboard", icon: Home },
     { title: "Explore voices", url: "/voices", icon: LayoutGrid },
     { title: "Text to speech", url: "/text-to-speech", icon: AudioLines },
     { title: "Voice cloning", icon: Volume2Icon },
