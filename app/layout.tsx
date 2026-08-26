@@ -1,9 +1,10 @@
+import { Toaster } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { TRPCReactProvider } from "@/trpc/client";
+import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
-import { Toaster } from "@/components/ui/sonner";
-import { ClerkProvider } from "@clerk/nextjs";
-import { TooltipProvider } from "@/components/ui/tooltip";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -21,16 +22,18 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <ClerkProvider>
-      <html
-        lang="en"
-        className={`${jakarta.variable} h-full antialiased`}
-        suppressHydrationWarning
-      >
-        <body className="min-h-full flex flex-col">
-          <TooltipProvider>{children}</TooltipProvider>
-          <Toaster />
-        </body>
-      </html>
+      <TRPCReactProvider>
+        <html
+          lang="en"
+          className={`${jakarta.variable} h-full antialiased`}
+          suppressHydrationWarning
+        >
+          <body className="min-h-full flex flex-col">
+            <TooltipProvider>{children}</TooltipProvider>
+            <Toaster />
+          </body>
+        </html>
+      </TRPCReactProvider>
     </ClerkProvider>
   );
 }
