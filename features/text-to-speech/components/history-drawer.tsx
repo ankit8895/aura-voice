@@ -1,0 +1,28 @@
+import {
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer";
+import { SettingsPanelHistory } from "./settings-panel-history";
+import { Button } from "@/components/ui/button";
+import { History } from "lucide-react";
+
+export function HistoryDrawer() {
+  return (
+    <Drawer>
+      <DrawerTrigger render={<Button variant={"outline"} size={"sm"}></Button>}>
+        <History className="size-4" />
+      </DrawerTrigger>
+      <DrawerContent>
+        <DrawerHeader>
+          <DrawerTitle>History</DrawerTitle>
+        </DrawerHeader>
+        <div className="overflow-y-auto">
+          <SettingsPanelHistory />
+        </div>
+      </DrawerContent>
+    </Drawer>
+  );
+}
