@@ -1,0 +1,42 @@
+import {
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer";
+import { SettingsPanelSettings } from "./settings-panel-settings";
+import { Button } from "@/components/ui/button";
+import { Settings } from "lucide-react";
+
+interface SettingsDrawerProps {
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
+  children?: React.ReactNode;
+}
+
+export function SettingsDrawer({
+  open,
+  onOpenChange,
+  children,
+}: SettingsDrawerProps) {
+  return (
+    <Drawer open={open} onOpenChange={onOpenChange}>
+      {children ?? (
+        <DrawerTrigger
+          render={<Button variant={"outline"} size={"sm"}></Button>}
+        >
+          <Settings className="size-4" />
+        </DrawerTrigger>
+      )}
+      <DrawerContent>
+        <DrawerHeader>
+          <DrawerTitle>Settings</DrawerTitle>
+        </DrawerHeader>
+        <div className="overflow-y-auto">
+          <SettingsPanelSettings />
+        </div>
+      </DrawerContent>
+    </Drawer>
+  );
+}
