@@ -5,6 +5,7 @@ import { prisma } from "@/lib/db";
 import { uploadAudio } from "@/lib/r2";
 import { TEXT_MAX_LENGTH } from "@/features/text-to-speech/data/constants";
 import { createTRPCRouter, orgProcedure } from "../init";
+import { polar } from "@/lib/polar";
 
 export const generationsRouter = createTRPCRouter({
   getById: orgProcedure
@@ -51,6 +52,25 @@ export const generationsRouter = createTRPCRouter({
       }),
     )
     .mutation(async ({ input, ctx }) => {
+      // CHECK FOR ACTIVE SUBSCRIPTION BEFORE GENERATION
+      try {
+        const customerState = await polar.customers.getStateExternal(ctx.orgId);
+        const hasActiveSubscription =
+          (customerState.active_subscriptions ?? []).length > 0;
+        if (!hasActiveSubscription)
+          throw new TRPCError({
+            code: "FORBIDDEN",
+            message: "SUBSCRIPTION_REQUIRED",
+          });
+      } catch (err) {
+        if (err instanceof TRPCError) throw err;
+        // CUSTOMER DOESN'T EXIST IN POLAR YET -> NO SUBSCRIPTION
+        throw new TRPCError({
+          code: "FORBIDDEN",
+          message: "SUBSCRIPTION_REQUIRED",
+        });
+      }
+
       const voice = await prisma.voice.findUnique({
         where: {
           id: input.voiceId,
@@ -148,6 +168,23 @@ export const generationsRouter = createTRPCRouter({
         throw new TRPCError({
           code: "INTERNAL_SERVER_ERROR",
           message: "Failed to store generated audio",
+        });
+
+      // INGEST USAGE EVENT TO POLAR (FIRE AND FORGET, DON'T BLOCK RESPONSE)
+      polar.events
+        .ingest({
+          events: [
+            {
+              name: "tts_generation",
+              external_customer_id: ctx.orgId,
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              metadata: { characters: input.text.length } as any,
+              timestamp: new Date().toISOString(),
+            },
+          ],
+        })
+        .catch(() => {
+          // Silently fail - don't break the user experience for metering errors
         });
 
       return {
