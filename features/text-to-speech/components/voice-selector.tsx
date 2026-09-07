@@ -1,11 +1,5 @@
 "use client";
 
-import { useSelector } from "@tanstack/react-form";
-import { VOICE_CATEGORY_LABELS } from "@/features/voices/data/voice-categories";
-import { useTypedAppFormContext } from "@/hooks/use-app-form";
-import { VoiceAvatar } from "@/components/voice-avatar/voice-avatar";
-import { useTTSVoices } from "../contexts/tts-voices-context";
-import { ttsFormOptions } from "./text-to-speech-form";
 import { Field, FieldLabel } from "@/components/ui/field";
 import {
   Select,
@@ -17,6 +11,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { VoiceAvatar } from "@/components/voice-avatar/voice-avatar";
+import { VOICE_CATEGORY_LABELS } from "@/features/voices/data/voice-categories";
+import { useTypedAppFormContext } from "@/hooks/use-app-form";
+import { useSelector } from "@tanstack/react-form";
+import { useTTSVoices } from "../contexts/tts-voices-context";
+import { ttsFormOptions } from "./text-to-speech-form";
 
 export function VoiceSelector() {
   const { customVoices, systemVoices, allVoices: voices } = useTTSVoices();

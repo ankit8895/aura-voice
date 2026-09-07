@@ -1,8 +1,8 @@
 "use client";
 
-import WaveSurfer from "wavesurfer.js";
 import { useIsMobile } from "@/hooks/use-mobile";
 import React, { useCallback, useEffect, useRef, useState } from "react";
+import WaveSurfer from "wavesurfer.js";
 
 interface UseWaveSurferOptions {
   url?: string;

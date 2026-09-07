@@ -1,14 +1,14 @@
 "use client";
 
 // import { format } from "date-fns";
-import { VoiceAvatar } from "@/components/voice-avatar/voice-avatar";
-import { useWaveSurfer } from "../hooks/use-wavesurfer";
-import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
-import { Spinner } from "@/components/ui/spinner";
-import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { Spinner } from "@/components/ui/spinner";
+import { VoiceAvatar } from "@/components/voice-avatar/voice-avatar";
+import { cn } from "@/lib/utils";
 import { Download, Pause, Play, Redo, Undo } from "lucide-react";
+import { useState } from "react";
+import { useWaveSurfer } from "../hooks/use-wavesurfer";
 
 type VoicePreviewPanelVoice = {
   id?: string;

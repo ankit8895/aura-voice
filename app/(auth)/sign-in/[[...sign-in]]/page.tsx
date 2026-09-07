@@ -1,4 +1,5 @@
 import { SignIn } from "@clerk/nextjs";
+import { shadesOfPurple } from "@clerk/ui/themes";
 
 export default function SignInPage() {
   return (
@@ -8,6 +9,7 @@ export default function SignInPage() {
           elements: {
             rootBox: "mx-auto",
           },
+          theme: shadesOfPurple,
         }}
       />
       ;

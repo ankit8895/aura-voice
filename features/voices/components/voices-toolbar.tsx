@@ -1,15 +1,15 @@
-import { useQueryState } from "nuqs";
-import { useDebouncedCallback } from "use-debounce";
-import { voicesSearchParams } from "../lib/params";
-import { VoiceCreateDialog } from "./voice-create-dialog";
-import { useState } from "react";
+import { Button } from "@/components/ui/button";
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
 } from "@/components/ui/input-group";
 import { Search, Sparkles } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { useQueryState } from "nuqs";
+import { useState } from "react";
+import { useDebouncedCallback } from "use-debounce";
+import { voicesSearchParams } from "../lib/params";
+import { VoiceCreateDialog } from "./voice-create-dialog";
 
 export function VoicesToolbar() {
   const [query, setQuery] = useQueryState("query", voicesSearchParams.query);

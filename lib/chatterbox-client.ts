@@ -1,5 +1,5 @@
-import createClient from "openapi-fetch";
 import type { paths } from "@/types/chatterbox-api";
+import createClient from "openapi-fetch";
 import { env } from "./env";
 
 export const chatterbox = createClient<paths>({
