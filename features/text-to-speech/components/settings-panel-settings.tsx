@@ -1,11 +1,11 @@
 "use client";
 
-import { useSelector } from "@tanstack/react-form";
-import { useTypedAppFormContext } from "@/hooks/use-app-form";
-import { sliders } from "../data/sliders";
-import { ttsFormOptions } from "./text-to-speech-form";
 import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { Slider } from "@/components/ui/slider";
+import { useTypedAppFormContext } from "@/hooks/use-app-form";
+import { useSelector } from "@tanstack/react-form";
+import { sliders } from "../data/sliders";
+import { ttsFormOptions } from "./text-to-speech-form";
 import { VoiceSelector } from "./voice-selector";
 
 export function SettingsPanelSettings() {

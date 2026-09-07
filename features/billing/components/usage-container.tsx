@@ -1,9 +1,9 @@
-import { useQuery, useMutation } from "@tanstack/react-query";
-import { useCheckout } from "../hooks/use-checkout";
-import { useTRPC } from "@/trpc/client";
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
+import { useTRPC } from "@/trpc/client";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { useCallback } from "react";
+import { useCheckout } from "../hooks/use-checkout";
 
 function formatCurrency(cents: number): string {
   return new Intl.NumberFormat("en-US", {

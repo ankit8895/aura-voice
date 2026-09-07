@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import {
   Drawer,
   DrawerContent,
@@ -5,9 +6,8 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
-import { SettingsPanelSettings } from "./settings-panel-settings";
-import { Button } from "@/components/ui/button";
 import { Settings } from "lucide-react";
+import { SettingsPanelSettings } from "./settings-panel-settings";
 
 interface SettingsDrawerProps {
   open?: boolean;

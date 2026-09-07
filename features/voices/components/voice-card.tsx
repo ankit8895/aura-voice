@@ -1,22 +1,3 @@
-import Link from "next/link";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { VoiceAvatar } from "@/components/voice-avatar/voice-avatar";
-import type { inferRouterOutputs } from "@trpc/server";
-import type { AppRouter } from "@/trpc/routers/_app";
-import { VOICE_CATEGORY_LABELS } from "../data/voice-categories";
-import { useAudioPlayback } from "@/hooks/use-audio-playback";
-import { useTRPC } from "@/trpc/client";
-import { useState } from "react";
-import { toast } from "sonner";
-import { Button } from "@/components/ui/button";
-import { Spinner } from "@/components/ui/spinner";
-import { Mic, MoreHorizontal, Pause, Play, Trash2 } from "lucide-react";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -27,6 +8,25 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Spinner } from "@/components/ui/spinner";
+import { VoiceAvatar } from "@/components/voice-avatar/voice-avatar";
+import { useAudioPlayback } from "@/hooks/use-audio-playback";
+import { useTRPC } from "@/trpc/client";
+import type { AppRouter } from "@/trpc/routers/_app";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import type { inferRouterOutputs } from "@trpc/server";
+import { Mic, MoreHorizontal, Pause, Play, Trash2 } from "lucide-react";
+import Link from "next/link";
+import { useState } from "react";
+import { toast } from "sonner";
+import { VOICE_CATEGORY_LABELS } from "../data/voice-categories";
 
 export type VoiceItem =
   inferRouterOutputs<AppRouter>["voices"]["getAll"]["custom"][number];
@@ -141,7 +141,7 @@ export function VoiceCard({ voice }: VoicesCardProps) {
               }
             >
               <Mic className="size-4 text-foreground" />
-              <span className="font-medium">Use this voice</span>
+              <span className="font-medium">Use voice</span>
             </DropdownMenuItem>
 
             {voice.variant === "CUSTOM" && (
@@ -150,7 +150,7 @@ export function VoiceCard({ voice }: VoicesCardProps) {
                 className={"text-destructive focus:text-destructive"}
               >
                 <Trash2 className="size-4 text-destructive" />
-                <span className="font-medium">Delete voice</span>
+                <span className="font-medium">Delete</span>
               </DropdownMenuItem>
             )}
           </DropdownMenuContent>

@@ -1,6 +1,5 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { OrbButton } from "@/components/ui/orb-button";
 import { useUser } from "@clerk/nextjs";
 import { Headphones, ThumbsUp } from "lucide-react";

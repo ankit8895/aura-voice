@@ -1,8 +1,8 @@
 import { cn } from "@/lib/utils";
-import { SidebarTrigger } from "./ui/sidebar";
-import { Button } from "./ui/button";
-import Link from "next/link";
 import { Headphones, ThumbsUp } from "lucide-react";
+import Link from "next/link";
+import { Button } from "./ui/button";
+import { SidebarTrigger } from "./ui/sidebar";
 
 export function PageHeader({
   title,
