@@ -3,7 +3,7 @@ import { shadesOfPurple } from "@clerk/ui/themes";
 
 export default function SignUpPage() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
+    <div className="flex min-h-screen items-center justify-center">
       <SignUp
         appearance={{
           elements: {

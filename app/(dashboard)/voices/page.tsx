@@ -1,6 +1,7 @@
 import { voicesSearchParamsCache } from "@/features/voices/lib/params";
 import { VoicesView } from "@/features/voices/views/voices-view";
 import { HydrateClient, prefetch, trpc } from "@/trpc/server";
+import { auth } from "@clerk/nextjs/server";
 import { Metadata } from "next";
 import type { SearchParams } from "nuqs/server";
 
@@ -11,6 +12,9 @@ export default async function VoicesPage({
 }: {
   searchParams: Promise<SearchParams>;
 }) {
+  const { isAuthenticated, redirectToSignIn } = await auth();
+
+  if (!isAuthenticated) return redirectToSignIn();
   const { query } = await voicesSearchParamsCache.parse(searchParams);
 
   prefetch(trpc.voices.getAll.queryOptions({ query }));

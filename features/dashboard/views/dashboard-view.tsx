@@ -5,7 +5,7 @@ import { TextInputPanel } from "../components/text-input-panel";
 
 export function DashboardView() {
   return (
-    <div className="relative">
+    <div className="relative bg-background">
       <PageHeader title="Dashboard" className="lg:hidden" />
       <div className="relative space-y-8 p-4 lg:p-16">
         <DashboardHeader />
