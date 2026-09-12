@@ -41,7 +41,7 @@ export function VoiceSelector() {
       <FieldLabel>Voice style</FieldLabel>
       <Select
         value={voiceId}
-        onValueChange={(v) => form.setFieldValue("voiceId", v)}
+        onValueChange={(v) => form.setFieldValue("voiceId", v ?? "")}
         disabled={isSubmitting}
       >
         <SelectTrigger
