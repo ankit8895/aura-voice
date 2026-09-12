@@ -51,6 +51,3 @@ next-env.d.ts
 __pycache__
 
 
-Dockerfile
-docker-compose.yml
-.dockerignore
