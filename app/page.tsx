@@ -210,7 +210,7 @@ export default function LandingPage() {
           </div>
 
           <div className="flex items-center gap-4">
-            <Link href="/login">
+            <Link href="/sign-in">
               <Button
                 variant="ghost"
                 className="text-slate-300 hover:text-white hover:bg-slate-800"
@@ -218,7 +218,7 @@ export default function LandingPage() {
                 Sign In
               </Button>
             </Link>
-            <Link href="/sign-in">
+            <Link href="/sign-up">
               <Button className="bg-linear-to-r from-violet-500 to-purple-600 hover:from-violet-600 hover:to-purple-700 text-white border-0">
                 Get Started
               </Button>
