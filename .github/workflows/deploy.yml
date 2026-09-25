@@ -38,6 +38,7 @@ jobs:
       - name: Build Next.js
         run: npm run build
         env:
+          SKIP_ENV_VALIDATION: "1"
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
   deploy:
