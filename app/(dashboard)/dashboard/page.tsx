@@ -10,5 +10,5 @@ export default async function DashboardPage() {
 
   if (!isAuthenticated) return redirectToSignIn();
   if (!orgId) return redirect("/org-selection");
-  return <DashboardView />;
+  return <>{isAuthenticated && orgId && <DashboardView />}</>;
 }
