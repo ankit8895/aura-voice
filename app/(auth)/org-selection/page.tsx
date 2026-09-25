@@ -1,20 +1,24 @@
 import { OrganizationList } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs/server";
 import { shadesOfPurple } from "@clerk/ui/themes";
 
-export default function OrgSelectionPage() {
+export default async function OrgSelectionPage() {
+  const { isAuthenticated } = await auth();
   return (
     <div className="flex min-h-screen items-center justify-center">
-      <OrganizationList
-        hidePersonal
-        afterCreateOrganizationUrl={"/dashboard"}
-        afterSelectOrganizationUrl={"/dashboard"}
-        appearance={{
-          elements: {
-            rootBox: "mx-auto",
-          },
-          theme: shadesOfPurple,
-        }}
-      />
+      {isAuthenticated && (
+        <OrganizationList
+          hidePersonal
+          afterCreateOrganizationUrl={"/dashboard"}
+          afterSelectOrganizationUrl={"/dashboard"}
+          appearance={{
+            elements: {
+              rootBox: "mx-auto",
+            },
+            theme: shadesOfPurple,
+          }}
+        />
+      )}
     </div>
   );
 }

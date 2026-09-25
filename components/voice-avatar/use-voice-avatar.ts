@@ -10,5 +10,6 @@ export function useVoiceAvatar(seed: string) {
       seed,
       size: 128,
     }).toDataUri();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [seed]);
 }

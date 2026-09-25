@@ -21,7 +21,9 @@ export default async function TextToSpeechPage({
   prefetch(trpc.generations.getAll.queryOptions());
   return (
     <HydrateClient>
-      <TextToSpeechView initialValues={{ text, voiceId }} />;
+      {isAuthenticated && orgId && (
+        <TextToSpeechView initialValues={{ text, voiceId }} />
+      )}
     </HydrateClient>
   );
 }

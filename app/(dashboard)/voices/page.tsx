@@ -22,8 +22,6 @@ export default async function VoicesPage({
   prefetch(trpc.voices.getAll.queryOptions({ query }));
 
   return (
-    <HydrateClient>
-      <VoicesView />
-    </HydrateClient>
+    <HydrateClient>{isAuthenticated && orgId && <VoicesView />}</HydrateClient>
   );
 }
